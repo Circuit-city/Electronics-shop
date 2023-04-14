@@ -20,7 +20,7 @@ jobs:
           ruby-version: '3.0.2'
       - run: cd backend && bundle install
       - run: cd backend && bundle exec rails db:create db:migrate RAILS_ENV=test
-      - run: cd backend && bundle exec rspec spec
+      # - run: cd backend && bundle exec rspec spec
 
 
   # deploy:

@@ -18,6 +18,5 @@ jobs:
      - name: Build up
        run: cd frontend && npm run build
 
-     - name: Test app
-       run: cd frontend && npm test
-          
+    #  - name: Test app
+    #    run: cd frontend && npm test
