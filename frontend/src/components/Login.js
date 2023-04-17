@@ -40,6 +40,11 @@ const Login = () => {
   }
   console.log("user in Login:", user);
  
+  const forgotPassword = () => {
+
+    
+
+  };
    
   return (
     <>
