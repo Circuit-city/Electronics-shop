@@ -1,3 +1,4 @@
+import './homepageAndNavbar.css';
 function Navbar() {
   return (
     <nav className="navbar">
