@@ -47,6 +47,7 @@ const Login = () => {
         alert('Password reset email has been sent')
     })
 
+
   };
    
   return (
@@ -66,7 +67,8 @@ const Login = () => {
             }}>
               <div className="emailplace"><input ref={emailRef} type="email" placeholder="Enter email" required /></div>
               <div className="passplace"><input ref={passwordRef} type="password" placeholder="Input password" required /></div>
-          
+              <div className="forgot">
+              <p onClick={forgotPassword}>Forgot password?</p>
               </div>
               <div className="loginBtn">
                 <input type='submit' value='login' />
