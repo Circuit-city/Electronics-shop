@@ -2,7 +2,7 @@ import Navbar from "./Navbar";
 import './homepageAndNavbar.css';
 
 
-function Homepage() {
+function Homepage() {  
   return (
     <div>
       <Navbar />
