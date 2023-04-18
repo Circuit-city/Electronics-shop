@@ -13,7 +13,7 @@ const LogOut = ({user}) => {
       return;
     }
 
-    const response = await fetch(`http://localhost:3000/logout`, {
+    const response = await fetch(`https://circuit-city-sxh8.onrender.com/logout`, {
       method: 'DELETE'
     });
 
@@ -39,4 +39,3 @@ const LogOut = ({user}) => {
 }
 
 export default LogOut
-
