@@ -39,4 +39,3 @@ const LogOut = ({user}) => {
 }
 
 export default LogOut
-
