@@ -13,14 +13,16 @@ puts "Seeding records..."
 User.create(
     name: "John Doe",
     email: "johndoe@example.com",
-    password: "password123"
+    password: "password123",
+    roles: "admin"
   )
   
   # create the second user
   User.create(
     name: "Jane Smith",
     email: "janesmith@example.com",
-    password: "password456"
+    password: "password456",
+    roles: "customer"
   )
 
   # Categories
