@@ -59884,3 +59884,667 @@ FOREIGN KEY ("category_id")
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Audio-Technica ATH Headphones"], ["description", "The Audio-Technica ATH headphones are high-quality headphones designed for audiophiles and music enthusiasts. "], ["price", 12000.0], ["category_id", 2], ["created_at", "2023-04-18 08:52:55.743975"], ["updated_at", "2023-04-18 08:52:55.743975"], ["image_url", "https://53525363.000webhostapp.com/Images/Razer_Opus-removebg-preview.png"]]
   [1m[36mTRANSACTION (80.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (189.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (127.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4877541228233818725)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230412094533)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (129.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230412094533"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20230417172456)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (97.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" text, "price" decimal, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(4877541228233818725)[0m
+  [1m[35m (171.1ms)[0m  [1m[35mCREATE DATABASE "circuit_city" ENCODING = 'unicode'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (161.6ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "description" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  [1m[35m (116.7ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" text, "price" decimal, "category_id" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "image_url" character varying)[0m
+  [1m[35m (85.6ms)[0m  [1m[35mCREATE INDEX "index_products_on_category_id" ON "products" ("category_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (127.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "roles" character varying)[0m
+  [1m[35m (7.5ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[35m (140.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (25.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230418082604)[0m
+  [1m[35m (9.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230412094533),
+(20230417172456),
+(20230417172947),
+(20230417173322);
+
+[0m
+  [1m[35m (141.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (19.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-04-18 11:36:29.315891"], ["updated_at", "2023-04-18 11:36:29.315891"]]
+  [1m[36mTRANSACTION (20.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "1cca228995c79db08edd943e47c366210a685bc1"], ["created_at", "2023-04-18 11:36:29.379200"], ["updated_at", "2023-04-18 11:36:29.379200"]]
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories"[0m
+  [1m[35m (126.2ms)[0m  [1m[35mCREATE TABLE "categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  [1m[35m (119.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "price" decimal, "category_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "image_url" varchar)[0m
+  [1m[35m (355.0ms)[0m  [1m[35mCREATE INDEX "index_products_on_category_id" ON "products" ("category_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (128.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "roles" varchar)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "description" text DEFAULT NULL, "price" decimal DEFAULT NULL, "category_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "image_url" varchar DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aproducts_on_category_id" ON "aproducts" ("category_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","category_id","created_at","updated_at","image_url")
+                     SELECT "id","name","description","price","category_id","created_at","updated_at","image_url" FROM "products"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "description" text DEFAULT NULL, "price" decimal DEFAULT NULL, "category_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "image_url" varchar DEFAULT NULL, CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_products_on_category_id" ON "products" ("category_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "products" ("id","name","description","price","category_id","created_at","updated_at","image_url")
+                     SELECT "id","name","description","price","category_id","created_at","updated_at","image_url" FROM "aproducts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aproducts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (96.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (115.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (97.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230418082604)[0m
+  [1m[35m (76.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230412094533),
+(20230417172456),
+(20230417172947),
+(20230417173322);
+
+[0m
+  [1m[35m (116.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-04-18 11:36:30.690381"], ["updated_at", "2023-04-18 11:36:30.690381"]]
+  [1m[36mTRANSACTION (78.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.2ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2023-04-18 11:36:30.809990"], ["key", "environment"]]
+  [1m[36mTRANSACTION (85.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "1cca228995c79db08edd943e47c366210a685bc1"], ["created_at", "2023-04-18 11:36:30.966800"], ["updated_at", "2023-04-18 11:36:30.966800"]]
+  [1m[36mTRANSACTION (94.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johndoe@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "roles") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "John Doe"], ["email", "johndoe@example.com"], ["password_digest", "[FILTERED]"], ["created_at", "2023-04-18 11:36:31.452284"], ["updated_at", "2023-04-18 11:36:31.452284"], ["roles", "admin"]]
+  [1m[36mTRANSACTION (18.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "janesmith@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "roles") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Jane Smith"], ["email", "janesmith@example.com"], ["password_digest", "[FILTERED]"], ["created_at", "2023-04-18 11:36:31.733339"], ["updated_at", "2023-04-18 11:36:31.733339"], ["roles", "customer"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "laptops"], ["description", nil], ["created_at", "2023-04-18 11:36:31.751838"], ["updated_at", "2023-04-18 11:36:31.751838"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "headphones"], ["description", nil], ["created_at", "2023-04-18 11:36:31.761115"], ["updated_at", "2023-04-18 11:36:31.761115"]]
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "TVs"], ["description", nil], ["created_at", "2023-04-18 11:36:31.772173"], ["updated_at", "2023-04-18 11:36:31.772173"]]
+  [1m[36mTRANSACTION (8.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "cameras"], ["description", nil], ["created_at", "2023-04-18 11:36:31.783351"], ["updated_at", "2023-04-18 11:36:31.783351"]]
+  [1m[36mTRANSACTION (8.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Canon EOS R6"], ["description", "The Canon EOS R6 is a full-frame mirrorless camera that boasts a 20.1MP CMOS sensor, 4K video recording, and advanced autofocus capabilities."], ["price", "140000.0"], ["category_id", 4], ["created_at", "2023-04-18 11:36:31.828295"], ["updated_at", "2023-04-18 11:36:31.828295"], ["image_url", "https://53525363.000webhostapp.com/Images/10_ways_to_supercharge_your_Canon_DSLR_camera-removebg-preview.png"]]
+  [1m[36mTRANSACTION (17.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Audio-Technica ATH-M50x"], ["description", "The Audio-Technica ATH-M50x is a professional studio monitor headphone that delivers exceptional audio performance and comfort. With its large aperture drivers, robust construction, and collapsible design, the ATH-M50x is ideal for professional audio engineers, musicians, and audiophiles."], ["price", "15000.0"], ["category_id", 2], ["created_at", "2023-04-18 11:36:31.850415"], ["updated_at", "2023-04-18 11:36:31.850415"], ["image_url", "https://53525363.000webhostapp.com/Images/Skullcandy_Crusher_Wireless_Over-Ear_Headphones_-_Black-removebg-preview.png"]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Dell Inspiron E1405"], ["description", "The Dell Inspiron E1405 is a compact and affordable laptop that offers reliable performance for everyday computing tasks. With its Intel Core processor, ample storage, and vibrant display, the Inspiron E1405 is perfect for students, professionals, and casual users who need a reliable and portable computing solution. It features a sleek design, easy-to-use interface, and a wide range of connectivity options for enhanced productivity and convenience."], ["price", "65000.0"], ["category_id", 1], ["created_at", "2023-04-18 11:36:31.861776"], ["updated_at", "2023-04-18 11:36:31.861776"], ["image_url", "https://53525363.000webhostapp.com/Images/Best_MacBook_alternatives_for_2022___Digital_Trends-removebg-preview.png"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Hisense U8H"], ["description", "The Hisense U8H is a high-quality 4K Ultra HD Android TV that delivers stunning picture quality, immersive audio, and a wealth of smart features."], ["price", "70000.0"], ["category_id", 1], ["created_at", "2023-04-18 11:36:31.872401"], ["updated_at", "2023-04-18 11:36:31.872401"], ["image_url", "https://53525363.000webhostapp.com/Images/I_like_tv_too_-removebg-preview.png"]]
+  [1m[36mTRANSACTION (7.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Canon EOS 5D"], ["description", "The Canon EOS 5D is a legendary full-frame DSLR camera that offers professional-grade image quality, performance, and versatility."], ["price", "80000.0"], ["category_id", 4], ["created_at", "2023-04-18 11:36:31.883817"], ["updated_at", "2023-04-18 11:36:31.883817"], ["image_url", "https://53525363.000webhostapp.com/Images/Canon_EOS-1D_X_Mark_II_Full-Frame_DSLR_Camera_for_Professional_Image_Creators__Features_20_2MP__Improved_AF_and_4K_Video-removebg-preview.png"]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Sennheiser HD 800"], ["description", "The Sennheiser HD 800 is a premium open-back over-ear headphone that offers audiophile-grade sound quality, exceptional comfort, and top-notch craftsmanship."], ["price", "10000.0"], ["category_id", 2], ["created_at", "2023-04-18 11:36:31.895209"], ["updated_at", "2023-04-18 11:36:31.895209"], ["image_url", "https://53525363.000webhostapp.com/Images/Functional_Headphones_That_Are_Also_Pretty_Chic-removebg-preview.png"]]
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "HP Envy x360"], ["description", "The HP Envy x360 is a premium 2-in-1 convertible laptop that offers versatility, performance, and style. With its powerful AMD Ryzen processor, up to 16GB of RAM, and fast SSD storage, the Envy x360 delivers smooth and responsive performance for multitasking, creative tasks, and entertainment."], ["price", "50000.0"], ["category_id", 1], ["created_at", "2023-04-18 11:36:31.906000"], ["updated_at", "2023-04-18 11:36:31.906000"], ["image_url", "https://53525363.000webhostapp.com/Images/HP_Pavilion_15-cs3000_%E8%A3%BD%E5%93%81%E8%A9%B3%E7%B4%B0_-_%E3%83%8E%E3%83%BC%E3%83%88%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3___%E6%97%A5%E6%9C%ACHP-removebg-preview.png"]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "LG CX 65-inch 4K"], ["description", "The LG CX 65-inch 4K TV is a cutting-edge OLED TV that offers stunning picture quality, advanced features, and smart functionality. With its 65-inch OLED panel, the CX delivers deep blacks, vibrant colors, and infinite contrast for a truly immersive viewing experience. It supports 4K resolution, HDR formats, and has a high refresh rate for smooth motion handling."], ["price", "70000.0"], ["category_id", 3], ["created_at", "2023-04-18 11:36:31.917137"], ["updated_at", "2023-04-18 11:36:31.917137"], ["image_url", "https://53525363.000webhostapp.com/Images/Vizio_M-Series_Quantum_4K_TV_review-removebg-preview.png"]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Audio-Technica ATH Headphones"], ["description", "The Audio-Technica ATH headphones are high-quality headphones designed for audiophiles and music enthusiasts. "], ["price", "12000.0"], ["category_id", 2], ["created_at", "2023-04-18 11:36:31.928444"], ["updated_at", "2023-04-18 11:36:31.928444"], ["image_url", "https://53525363.000webhostapp.com/Images/Razer_Opus-removebg-preview.png"]]
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johndoe@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "janesmith@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "laptops"], ["description", nil], ["created_at", "2023-04-18 11:36:48.054488"], ["updated_at", "2023-04-18 11:36:48.054488"]]
+  [1m[36mTRANSACTION (14.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "headphones"], ["description", nil], ["created_at", "2023-04-18 11:36:48.072124"], ["updated_at", "2023-04-18 11:36:48.072124"]]
+  [1m[36mTRANSACTION (7.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "TVs"], ["description", nil], ["created_at", "2023-04-18 11:36:48.083316"], ["updated_at", "2023-04-18 11:36:48.083316"]]
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "cameras"], ["description", nil], ["created_at", "2023-04-18 11:36:48.094492"], ["updated_at", "2023-04-18 11:36:48.094492"]]
+  [1m[36mTRANSACTION (7.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.7ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Canon EOS R6"], ["description", "The Canon EOS R6 is a full-frame mirrorless camera that boasts a 20.1MP CMOS sensor, 4K video recording, and advanced autofocus capabilities."], ["price", "140000.0"], ["category_id", 8], ["created_at", "2023-04-18 11:36:48.200314"], ["updated_at", "2023-04-18 11:36:48.200314"], ["image_url", "https://53525363.000webhostapp.com/Images/10_ways_to_supercharge_your_Canon_DSLR_camera-removebg-preview.png"]]
+  [1m[36mTRANSACTION (11.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Audio-Technica ATH-M50x"], ["description", "The Audio-Technica ATH-M50x is a professional studio monitor headphone that delivers exceptional audio performance and comfort. With its large aperture drivers, robust construction, and collapsible design, the ATH-M50x is ideal for professional audio engineers, musicians, and audiophiles."], ["price", "15000.0"], ["category_id", 6], ["created_at", "2023-04-18 11:36:48.216719"], ["updated_at", "2023-04-18 11:36:48.216719"], ["image_url", "https://53525363.000webhostapp.com/Images/Skullcandy_Crusher_Wireless_Over-Ear_Headphones_-_Black-removebg-preview.png"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Dell Inspiron E1405"], ["description", "The Dell Inspiron E1405 is a compact and affordable laptop that offers reliable performance for everyday computing tasks. With its Intel Core processor, ample storage, and vibrant display, the Inspiron E1405 is perfect for students, professionals, and casual users who need a reliable and portable computing solution. It features a sleek design, easy-to-use interface, and a wide range of connectivity options for enhanced productivity and convenience."], ["price", "65000.0"], ["category_id", 5], ["created_at", "2023-04-18 11:36:48.227783"], ["updated_at", "2023-04-18 11:36:48.227783"], ["image_url", "https://53525363.000webhostapp.com/Images/Best_MacBook_alternatives_for_2022___Digital_Trends-removebg-preview.png"]]
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Hisense U8H"], ["description", "The Hisense U8H is a high-quality 4K Ultra HD Android TV that delivers stunning picture quality, immersive audio, and a wealth of smart features."], ["price", "70000.0"], ["category_id", 5], ["created_at", "2023-04-18 11:36:48.239182"], ["updated_at", "2023-04-18 11:36:48.239182"], ["image_url", "https://53525363.000webhostapp.com/Images/I_like_tv_too_-removebg-preview.png"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Canon EOS 5D"], ["description", "The Canon EOS 5D is a legendary full-frame DSLR camera that offers professional-grade image quality, performance, and versatility."], ["price", "80000.0"], ["category_id", 8], ["created_at", "2023-04-18 11:36:48.250103"], ["updated_at", "2023-04-18 11:36:48.250103"], ["image_url", "https://53525363.000webhostapp.com/Images/Canon_EOS-1D_X_Mark_II_Full-Frame_DSLR_Camera_for_Professional_Image_Creators__Features_20_2MP__Improved_AF_and_4K_Video-removebg-preview.png"]]
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Sennheiser HD 800"], ["description", "The Sennheiser HD 800 is a premium open-back over-ear headphone that offers audiophile-grade sound quality, exceptional comfort, and top-notch craftsmanship."], ["price", "10000.0"], ["category_id", 6], ["created_at", "2023-04-18 11:36:48.261073"], ["updated_at", "2023-04-18 11:36:48.261073"], ["image_url", "https://53525363.000webhostapp.com/Images/Functional_Headphones_That_Are_Also_Pretty_Chic-removebg-preview.png"]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "HP Envy x360"], ["description", "The HP Envy x360 is a premium 2-in-1 convertible laptop that offers versatility, performance, and style. With its powerful AMD Ryzen processor, up to 16GB of RAM, and fast SSD storage, the Envy x360 delivers smooth and responsive performance for multitasking, creative tasks, and entertainment."], ["price", "50000.0"], ["category_id", 5], ["created_at", "2023-04-18 11:36:48.272351"], ["updated_at", "2023-04-18 11:36:48.272351"], ["image_url", "https://53525363.000webhostapp.com/Images/HP_Pavilion_15-cs3000_%E8%A3%BD%E5%93%81%E8%A9%B3%E7%B4%B0_-_%E3%83%8E%E3%83%BC%E3%83%88%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3___%E6%97%A5%E6%9C%ACHP-removebg-preview.png"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "LG CX 65-inch 4K"], ["description", "The LG CX 65-inch 4K TV is a cutting-edge OLED TV that offers stunning picture quality, advanced features, and smart functionality. With its 65-inch OLED panel, the CX delivers deep blacks, vibrant colors, and infinite contrast for a truly immersive viewing experience. It supports 4K resolution, HDR formats, and has a high refresh rate for smooth motion handling."], ["price", "70000.0"], ["category_id", 7], ["created_at", "2023-04-18 11:36:48.283497"], ["updated_at", "2023-04-18 11:36:48.283497"], ["image_url", "https://53525363.000webhostapp.com/Images/Vizio_M-Series_Quantum_4K_TV_review-removebg-preview.png"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Audio-Technica ATH Headphones"], ["description", "The Audio-Technica ATH headphones are high-quality headphones designed for audiophiles and music enthusiasts. "], ["price", "12000.0"], ["category_id", 6], ["created_at", "2023-04-18 11:36:48.294604"], ["updated_at", "2023-04-18 11:36:48.294604"], ["image_url", "https://53525363.000webhostapp.com/Images/Razer_Opus-removebg-preview.png"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johndoe@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "janesmith@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "laptops"], ["description", nil], ["created_at", "2023-04-18 11:44:00.633281"], ["updated_at", "2023-04-18 11:44:00.633281"]]
+  [1m[36mTRANSACTION (18.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "headphones"], ["description", nil], ["created_at", "2023-04-18 11:44:00.657361"], ["updated_at", "2023-04-18 11:44:00.657361"]]
+  [1m[36mTRANSACTION (12.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "TVs"], ["description", nil], ["created_at", "2023-04-18 11:44:00.679676"], ["updated_at", "2023-04-18 11:44:00.679676"]]
+  [1m[36mTRANSACTION (12.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "cameras"], ["description", nil], ["created_at", "2023-04-18 11:44:00.701566"], ["updated_at", "2023-04-18 11:44:00.701566"]]
+  [1m[36mTRANSACTION (12.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (1.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Canon EOS R6"], ["description", "The Canon EOS R6 is a full-frame mirrorless camera that boasts a 20.1MP CMOS sensor, 4K video recording, and advanced autofocus capabilities."], ["price", "140000.0"], ["category_id", 12], ["created_at", "2023-04-18 11:44:00.782947"], ["updated_at", "2023-04-18 11:44:00.782947"], ["image_url", "https://53525363.000webhostapp.com/Images/10_ways_to_supercharge_your_Canon_DSLR_camera-removebg-preview.png"]]
+  [1m[36mTRANSACTION (20.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.6ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Audio-Technica ATH-M50x"], ["description", "The Audio-Technica ATH-M50x is a professional studio monitor headphone that delivers exceptional audio performance and comfort. With its large aperture drivers, robust construction, and collapsible design, the ATH-M50x is ideal for professional audio engineers, musicians, and audiophiles."], ["price", "15000.0"], ["category_id", 10], ["created_at", "2023-04-18 11:44:00.811533"], ["updated_at", "2023-04-18 11:44:00.811533"], ["image_url", "https://53525363.000webhostapp.com/Images/Skullcandy_Crusher_Wireless_Over-Ear_Headphones_-_Black-removebg-preview.png"]]
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Dell Inspiron E1405"], ["description", "The Dell Inspiron E1405 is a compact and affordable laptop that offers reliable performance for everyday computing tasks. With its Intel Core processor, ample storage, and vibrant display, the Inspiron E1405 is perfect for students, professionals, and casual users who need a reliable and portable computing solution. It features a sleek design, easy-to-use interface, and a wide range of connectivity options for enhanced productivity and convenience."], ["price", "65000.0"], ["category_id", 9], ["created_at", "2023-04-18 11:44:00.835581"], ["updated_at", "2023-04-18 11:44:00.835581"], ["image_url", "https://53525363.000webhostapp.com/Images/Best_MacBook_alternatives_for_2022___Digital_Trends-removebg-preview.png"]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Hisense U8H"], ["description", "The Hisense U8H is a high-quality 4K Ultra HD Android TV that delivers stunning picture quality, immersive audio, and a wealth of smart features."], ["price", "70000.0"], ["category_id", 9], ["created_at", "2023-04-18 11:44:00.869638"], ["updated_at", "2023-04-18 11:44:00.869638"], ["image_url", "https://53525363.000webhostapp.com/Images/I_like_tv_too_-removebg-preview.png"]]
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Canon EOS 5D"], ["description", "The Canon EOS 5D is a legendary full-frame DSLR camera that offers professional-grade image quality, performance, and versatility."], ["price", "80000.0"], ["category_id", 12], ["created_at", "2023-04-18 11:44:00.924754"], ["updated_at", "2023-04-18 11:44:00.924754"], ["image_url", "https://53525363.000webhostapp.com/Images/Canon_EOS-1D_X_Mark_II_Full-Frame_DSLR_Camera_for_Professional_Image_Creators__Features_20_2MP__Improved_AF_and_4K_Video-removebg-preview.png"]]
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Sennheiser HD 800"], ["description", "The Sennheiser HD 800 is a premium open-back over-ear headphone that offers audiophile-grade sound quality, exceptional comfort, and top-notch craftsmanship."], ["price", "10000.0"], ["category_id", 10], ["created_at", "2023-04-18 11:44:00.933116"], ["updated_at", "2023-04-18 11:44:00.933116"], ["image_url", "https://53525363.000webhostapp.com/Images/Functional_Headphones_That_Are_Also_Pretty_Chic-removebg-preview.png"]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "HP Envy x360"], ["description", "The HP Envy x360 is a premium 2-in-1 convertible laptop that offers versatility, performance, and style. With its powerful AMD Ryzen processor, up to 16GB of RAM, and fast SSD storage, the Envy x360 delivers smooth and responsive performance for multitasking, creative tasks, and entertainment."], ["price", "50000.0"], ["category_id", 9], ["created_at", "2023-04-18 11:44:00.944441"], ["updated_at", "2023-04-18 11:44:00.944441"], ["image_url", "https://53525363.000webhostapp.com/Images/HP_Pavilion_15-cs3000_%E8%A3%BD%E5%93%81%E8%A9%B3%E7%B4%B0_-_%E3%83%8E%E3%83%BC%E3%83%88%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3___%E6%97%A5%E6%9C%ACHP-removebg-preview.png"]]
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "LG CX 65-inch 4K"], ["description", "The LG CX 65-inch 4K TV is a cutting-edge OLED TV that offers stunning picture quality, advanced features, and smart functionality. With its 65-inch OLED panel, the CX delivers deep blacks, vibrant colors, and infinite contrast for a truly immersive viewing experience. It supports 4K resolution, HDR formats, and has a high refresh rate for smooth motion handling."], ["price", "70000.0"], ["category_id", 11], ["created_at", "2023-04-18 11:44:00.955618"], ["updated_at", "2023-04-18 11:44:00.955618"], ["image_url", "https://53525363.000webhostapp.com/Images/Vizio_M-Series_Quantum_4K_TV_review-removebg-preview.png"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Audio-Technica ATH Headphones"], ["description", "The Audio-Technica ATH headphones are high-quality headphones designed for audiophiles and music enthusiasts. "], ["price", "12000.0"], ["category_id", 10], ["created_at", "2023-04-18 11:44:00.966628"], ["updated_at", "2023-04-18 11:44:00.966628"], ["image_url", "https://53525363.000webhostapp.com/Images/Razer_Opus-removebg-preview.png"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (396.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "circuit_city"[0m
+  [1m[35m (210.0ms)[0m  [1m[35mCREATE DATABASE "circuit_city" ENCODING = 'unicode'[0m
+  [1m[35mSQL (29.9ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (114.8ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "description" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  [1m[35m (160.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" text, "price" decimal, "category_id" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "image_url" character varying)[0m
+  [1m[35m (85.3ms)[0m  [1m[35mCREATE INDEX "index_products_on_category_id" ON "products" ("category_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (138.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "roles" character varying)[0m
+  [1m[35m (7.0ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[35m (130.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (7.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230418082604)[0m
+  [1m[35m (9.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230412094533),
+(20230417172456),
+(20230417172947),
+(20230417173322);
+
+[0m
+  [1m[35m (151.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-04-18 11:44:46.566967"], ["updated_at", "2023-04-18 11:44:46.566967"]]
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "8cb40635f4d989e53269c98c7068a462cb7d43a5"], ["created_at", "2023-04-18 11:44:46.602878"], ["updated_at", "2023-04-18 11:44:46.602878"]]
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories"[0m
+  [1m[35m (117.8ms)[0m  [1m[35mCREATE TABLE "categories" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "products"[0m
+  [1m[35m (95.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "price" decimal, "category_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "image_url" varchar)[0m
+  [1m[35m (130.8ms)[0m  [1m[35mCREATE INDEX "index_products_on_category_id" ON "products" ("category_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (117.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "password_digest" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "roles" varchar)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aproducts" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "description" text DEFAULT NULL, "price" decimal DEFAULT NULL, "category_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "image_url" varchar DEFAULT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "tindex_aproducts_on_category_id" ON "aproducts" ("category_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "aproducts" ("id","name","description","price","category_id","created_at","updated_at","image_url")
+                     SELECT "id","name","description","price","category_id","created_at","updated_at","image_url" FROM "products"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE "products"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "description" text DEFAULT NULL, "price" decimal DEFAULT NULL, "category_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "image_url" varchar DEFAULT NULL, CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_products_on_category_id" ON "products" ("category_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "products" ("id","name","description","price","category_id","created_at","updated_at","image_url")
+                     SELECT "id","name","description","price","category_id","created_at","updated_at","image_url" FROM "aproducts"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aproducts"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (92.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (107.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (92.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230418082604)[0m
+  [1m[35m (74.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230412094533),
+(20230417172456),
+(20230417172947),
+(20230417173322);
+
+[0m
+  [1m[35m (120.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-04-18 11:44:47.738734"], ["updated_at", "2023-04-18 11:44:47.738734"]]
+  [1m[36mTRANSACTION (82.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.7ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2023-04-18 11:44:47.838354"], ["key", "environment"]]
+  [1m[36mTRANSACTION (69.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "8cb40635f4d989e53269c98c7068a462cb7d43a5"], ["created_at", "2023-04-18 11:44:47.924732"], ["updated_at", "2023-04-18 11:44:47.924732"]]
+  [1m[36mTRANSACTION (73.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johndoe@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "roles") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "John Doe"], ["email", "johndoe@example.com"], ["password_digest", "[FILTERED]"], ["created_at", "2023-04-18 11:44:48.345060"], ["updated_at", "2023-04-18 11:44:48.345060"], ["roles", "admin"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "janesmith@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "roles") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Jane Smith"], ["email", "janesmith@example.com"], ["password_digest", "[FILTERED]"], ["created_at", "2023-04-18 11:44:48.582192"], ["updated_at", "2023-04-18 11:44:48.582192"], ["roles", "customer"]]
+  [1m[36mTRANSACTION (12.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "laptops"], ["description", nil], ["created_at", "2023-04-18 11:44:48.609739"], ["updated_at", "2023-04-18 11:44:48.609739"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "headphones"], ["description", nil], ["created_at", "2023-04-18 11:44:48.619321"], ["updated_at", "2023-04-18 11:44:48.619321"]]
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "TVs"], ["description", nil], ["created_at", "2023-04-18 11:44:48.630634"], ["updated_at", "2023-04-18 11:44:48.630634"]]
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "cameras"], ["description", nil], ["created_at", "2023-04-18 11:44:48.641813"], ["updated_at", "2023-04-18 11:44:48.641813"]]
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.8ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Canon EOS R6"], ["description", "The Canon EOS R6 is a full-frame mirrorless camera that boasts a 20.1MP CMOS sensor, 4K video recording, and advanced autofocus capabilities."], ["price", "140000.0"], ["category_id", 4], ["created_at", "2023-04-18 11:44:48.671734"], ["updated_at", "2023-04-18 11:44:48.671734"], ["image_url", "https://53525363.000webhostapp.com/Images/10_ways_to_supercharge_your_Canon_DSLR_camera-removebg-preview.png"]]
+  [1m[36mTRANSACTION (20.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Audio-Technica ATH-M50x"], ["description", "The Audio-Technica ATH-M50x is a professional studio monitor headphone that delivers exceptional audio performance and comfort. With its large aperture drivers, robust construction, and collapsible design, the ATH-M50x is ideal for professional audio engineers, musicians, and audiophiles."], ["price", "15000.0"], ["category_id", 2], ["created_at", "2023-04-18 11:44:48.697562"], ["updated_at", "2023-04-18 11:44:48.697562"], ["image_url", "https://53525363.000webhostapp.com/Images/Skullcandy_Crusher_Wireless_Over-Ear_Headphones_-_Black-removebg-preview.png"]]
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Dell Inspiron E1405"], ["description", "The Dell Inspiron E1405 is a compact and affordable laptop that offers reliable performance for everyday computing tasks. With its Intel Core processor, ample storage, and vibrant display, the Inspiron E1405 is perfect for students, professionals, and casual users who need a reliable and portable computing solution. It features a sleek design, easy-to-use interface, and a wide range of connectivity options for enhanced productivity and convenience."], ["price", "65000.0"], ["category_id", 1], ["created_at", "2023-04-18 11:44:48.708108"], ["updated_at", "2023-04-18 11:44:48.708108"], ["image_url", "https://53525363.000webhostapp.com/Images/Best_MacBook_alternatives_for_2022___Digital_Trends-removebg-preview.png"]]
+  [1m[36mTRANSACTION (7.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Hisense U8H"], ["description", "The Hisense U8H is a high-quality 4K Ultra HD Android TV that delivers stunning picture quality, immersive audio, and a wealth of smart features."], ["price", "70000.0"], ["category_id", 1], ["created_at", "2023-04-18 11:44:48.719226"], ["updated_at", "2023-04-18 11:44:48.719226"], ["image_url", "https://53525363.000webhostapp.com/Images/I_like_tv_too_-removebg-preview.png"]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Canon EOS 5D"], ["description", "The Canon EOS 5D is a legendary full-frame DSLR camera that offers professional-grade image quality, performance, and versatility."], ["price", "80000.0"], ["category_id", 4], ["created_at", "2023-04-18 11:44:48.730305"], ["updated_at", "2023-04-18 11:44:48.730305"], ["image_url", "https://53525363.000webhostapp.com/Images/Canon_EOS-1D_X_Mark_II_Full-Frame_DSLR_Camera_for_Professional_Image_Creators__Features_20_2MP__Improved_AF_and_4K_Video-removebg-preview.png"]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Sennheiser HD 800"], ["description", "The Sennheiser HD 800 is a premium open-back over-ear headphone that offers audiophile-grade sound quality, exceptional comfort, and top-notch craftsmanship."], ["price", "10000.0"], ["category_id", 2], ["created_at", "2023-04-18 11:44:48.741584"], ["updated_at", "2023-04-18 11:44:48.741584"], ["image_url", "https://53525363.000webhostapp.com/Images/Functional_Headphones_That_Are_Also_Pretty_Chic-removebg-preview.png"]]
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "HP Envy x360"], ["description", "The HP Envy x360 is a premium 2-in-1 convertible laptop that offers versatility, performance, and style. With its powerful AMD Ryzen processor, up to 16GB of RAM, and fast SSD storage, the Envy x360 delivers smooth and responsive performance for multitasking, creative tasks, and entertainment."], ["price", "50000.0"], ["category_id", 1], ["created_at", "2023-04-18 11:44:48.752636"], ["updated_at", "2023-04-18 11:44:48.752636"], ["image_url", "https://53525363.000webhostapp.com/Images/HP_Pavilion_15-cs3000_%E8%A3%BD%E5%93%81%E8%A9%B3%E7%B4%B0_-_%E3%83%8E%E3%83%BC%E3%83%88%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3___%E6%97%A5%E6%9C%ACHP-removebg-preview.png"]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "LG CX 65-inch 4K"], ["description", "The LG CX 65-inch 4K TV is a cutting-edge OLED TV that offers stunning picture quality, advanced features, and smart functionality. With its 65-inch OLED panel, the CX delivers deep blacks, vibrant colors, and infinite contrast for a truly immersive viewing experience. It supports 4K resolution, HDR formats, and has a high refresh rate for smooth motion handling."], ["price", "70000.0"], ["category_id", 3], ["created_at", "2023-04-18 11:44:48.763674"], ["updated_at", "2023-04-18 11:44:48.763674"], ["image_url", "https://53525363.000webhostapp.com/Images/Vizio_M-Series_Quantum_4K_TV_review-removebg-preview.png"]]
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "category_id", "created_at", "updated_at", "image_url") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Audio-Technica ATH Headphones"], ["description", "The Audio-Technica ATH headphones are high-quality headphones designed for audiophiles and music enthusiasts. "], ["price", "12000.0"], ["category_id", 2], ["created_at", "2023-04-18 11:44:48.774958"], ["updated_at", "2023-04-18 11:44:48.774958"], ["image_url", "https://53525363.000webhostapp.com/Images/Razer_Opus-removebg-preview.png"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (341.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "circuit_city"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "circuit_city"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "circuit_city"[0m
+  [1m[35m (194.5ms)[0m  [1m[35mCREATE DATABASE "circuit_city" ENCODING = 'unicode'[0m
+  [1m[35m (113.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (126.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20230412094533)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (165.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230412094533"]]
+  [1m[36mTRANSACTION (97.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20230417172456)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (111.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" text, "price" decimal, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20230417172456)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (119.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" text, "price" decimal, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20230417172456)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (183.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" text, "price" decimal, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20230417172456)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (109.1ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" text, "price" decimal, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+)[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20230417172456)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (116.6ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" text, "price" decimal, "categoryID_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_431b53016f"
+FOREIGN KEY ("categoryID_id")
+  REFERENCES "categoryIDs" ("id")
+)[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20230417172456)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (131.2ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" text, "price" decimal, "category_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20230417172456)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (134.9ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" text, "price" decimal, "category_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20230417172456)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (107.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" text, "price" decimal, "category_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20230417172456)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (108.5ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" text, "price" decimal, "category_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "circuit_city" ENCODING = 'unicode'[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProducts (20230417172456)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (110.4ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" text, "price" decimal, "category_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-04-18 12:29:29.055473"], ["updated_at", "2023-04-18 12:29:29.055473"]]
+  [1m[36mTRANSACTION (14.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE DATABASE "circuit_city" ENCODING = 'unicode'[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "categories" CASCADE[0m
+  [1m[35m (128.4ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "description" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "products" CASCADE[0m
+  [1m[35m (139.8ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying, "description" text, "price" decimal, "category_id" integer NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "image_url" character varying)[0m
+  [1m[35m (64.2ms)[0m  [1m[35mCREATE INDEX "index_products_on_category_id" ON "products" ("category_id")[0m
+  [1m[35m (9.9ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (130.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "roles" character varying)[0m
+  [1m[35m (8.4ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_fb915499a4"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (10.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230418082604)[0m
+  [1m[35m (9.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230417172456),
+(20230417172947),
+(20230417173322);
+
+[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "8cb40635f4d989e53269c98c7068a462cb7d43a5"], ["created_at", "2023-04-18 12:29:48.022205"], ["updated_at", "2023-04-18 12:29:48.022205"]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddForeignKeyToProducts (20230418122435)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "products" ADD "category_id" integer[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddForeignKeyToProducts (20230418122435)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "products" ADD "category_id" integer[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddForeignKeyToProducts (20230418122435)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "products" ADD "category_id" integer[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddForeignKeyToProducts (20230418122435)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "products" ADD "category_id" integer[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddForeignKeyToProducts (20230418122435)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "products" ADD "category_id" integer[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveColumnFromProducts (20230418123737)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "products" DROP COLUMN "category_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230418123737"]]
+  [1m[36mTRANSACTION (16.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddCategoryToProducts (20230418124114)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "products" ADD "category_id" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230418124114"]]
+  [1m[36mTRANSACTION (17.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2364683326680168165)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johndoe@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "roles") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "John Doe"], ["email", "johndoe@example.com"], ["password_digest", "[FILTERED]"], ["created_at", "2023-04-18 12:41:34.181910"], ["updated_at", "2023-04-18 12:41:34.181910"], ["roles", "admin"]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "janesmith@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "created_at", "updated_at", "roles") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Jane Smith"], ["email", "janesmith@example.com"], ["password_digest", "[FILTERED]"], ["created_at", "2023-04-18 12:41:34.407621"], ["updated_at", "2023-04-18 12:41:34.407621"], ["roles", "customer"]]
+  [1m[36mTRANSACTION (13.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "laptops"], ["description", nil], ["created_at", "2023-04-18 12:41:34.436196"], ["updated_at", "2023-04-18 12:41:34.436196"]]
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "headphones"], ["description", nil], ["created_at", "2023-04-18 12:41:34.445581"], ["updated_at", "2023-04-18 12:41:34.445581"]]
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "TVs"], ["description", nil], ["created_at", "2023-04-18 12:41:34.456769"], ["updated_at", "2023-04-18 12:41:34.456769"]]
+  [1m[36mTRANSACTION (7.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "cameras"], ["description", nil], ["created_at", "2023-04-18 12:41:34.467918"], ["updated_at", "2023-04-18 12:41:34.467918"]]
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.5ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Canon EOS R6"], ["description", "The Canon EOS R6 is a full-frame mirrorless camera that boasts a 20.1MP CMOS sensor, 4K video recording, and advanced autofocus capabilities."], ["price", "140000.0"], ["created_at", "2023-04-18 12:41:34.497953"], ["updated_at", "2023-04-18 12:41:34.497953"], ["image_url", "https://53525363.000webhostapp.com/Images/10_ways_to_supercharge_your_Canon_DSLR_camera-removebg-preview.png"], ["category_id", 4]]
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Audio-Technica ATH-M50x"], ["description", "The Audio-Technica ATH-M50x is a professional studio monitor headphone that delivers exceptional audio performance and comfort. With its large aperture drivers, robust construction, and collapsible design, the ATH-M50x is ideal for professional audio engineers, musicians, and audiophiles."], ["price", "15000.0"], ["created_at", "2023-04-18 12:41:34.512534"], ["updated_at", "2023-04-18 12:41:34.512534"], ["image_url", "https://53525363.000webhostapp.com/Images/Skullcandy_Crusher_Wireless_Over-Ear_Headphones_-_Black-removebg-preview.png"], ["category_id", 2]]
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Dell Inspiron E1405"], ["description", "The Dell Inspiron E1405 is a compact and affordable laptop that offers reliable performance for everyday computing tasks. With its Intel Core processor, ample storage, and vibrant display, the Inspiron E1405 is perfect for students, professionals, and casual users who need a reliable and portable computing solution. It features a sleek design, easy-to-use interface, and a wide range of connectivity options for enhanced productivity and convenience."], ["price", "65000.0"], ["created_at", "2023-04-18 12:41:34.543266"], ["updated_at", "2023-04-18 12:41:34.543266"], ["image_url", "https://53525363.000webhostapp.com/Images/Best_MacBook_alternatives_for_2022___Digital_Trends-removebg-preview.png"], ["category_id", 1]]
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Hisense U8H"], ["description", "The Hisense U8H is a high-quality 4K Ultra HD Android TV that delivers stunning picture quality, immersive audio, and a wealth of smart features."], ["price", "70000.0"], ["created_at", "2023-04-18 12:41:34.573369"], ["updated_at", "2023-04-18 12:41:34.573369"], ["image_url", "https://53525363.000webhostapp.com/Images/I_like_tv_too_-removebg-preview.png"], ["category_id", 1]]
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Canon EOS 5D"], ["description", "The Canon EOS 5D is a legendary full-frame DSLR camera that offers professional-grade image quality, performance, and versatility."], ["price", "80000.0"], ["created_at", "2023-04-18 12:41:34.612495"], ["updated_at", "2023-04-18 12:41:34.612495"], ["image_url", "https://53525363.000webhostapp.com/Images/Canon_EOS-1D_X_Mark_II_Full-Frame_DSLR_Camera_for_Professional_Image_Creators__Features_20_2MP__Improved_AF_and_4K_Video-removebg-preview.png"], ["category_id", 4]]
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Sennheiser HD 800"], ["description", "The Sennheiser HD 800 is a premium open-back over-ear headphone that offers audiophile-grade sound quality, exceptional comfort, and top-notch craftsmanship."], ["price", "10000.0"], ["created_at", "2023-04-18 12:41:34.623593"], ["updated_at", "2023-04-18 12:41:34.623593"], ["image_url", "https://53525363.000webhostapp.com/Images/Functional_Headphones_That_Are_Also_Pretty_Chic-removebg-preview.png"], ["category_id", 2]]
+  [1m[36mTRANSACTION (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "HP Envy x360"], ["description", "The HP Envy x360 is a premium 2-in-1 convertible laptop that offers versatility, performance, and style. With its powerful AMD Ryzen processor, up to 16GB of RAM, and fast SSD storage, the Envy x360 delivers smooth and responsive performance for multitasking, creative tasks, and entertainment."], ["price", "50000.0"], ["created_at", "2023-04-18 12:41:34.634491"], ["updated_at", "2023-04-18 12:41:34.634491"], ["image_url", "https://53525363.000webhostapp.com/Images/HP_Pavilion_15-cs3000_%E8%A3%BD%E5%93%81%E8%A9%B3%E7%B4%B0_-_%E3%83%8E%E3%83%BC%E3%83%88%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3___%E6%97%A5%E6%9C%ACHP-removebg-preview.png"], ["category_id", 1]]
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "LG CX 65-inch 4K"], ["description", "The LG CX 65-inch 4K TV is a cutting-edge OLED TV that offers stunning picture quality, advanced features, and smart functionality. With its 65-inch OLED panel, the CX delivers deep blacks, vibrant colors, and infinite contrast for a truly immersive viewing experience. It supports 4K resolution, HDR formats, and has a high refresh rate for smooth motion handling."], ["price", "70000.0"], ["created_at", "2023-04-18 12:41:34.645546"], ["updated_at", "2023-04-18 12:41:34.645546"], ["image_url", "https://53525363.000webhostapp.com/Images/Vizio_M-Series_Quantum_4K_TV_review-removebg-preview.png"], ["category_id", 3]]
+  [1m[36mTRANSACTION (7.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Audio-Technica ATH Headphones"], ["description", "The Audio-Technica ATH headphones are high-quality headphones designed for audiophiles and music enthusiasts. "], ["price", "12000.0"], ["created_at", "2023-04-18 12:41:34.656804"], ["updated_at", "2023-04-18 12:41:34.656804"], ["image_url", "https://53525363.000webhostapp.com/Images/Razer_Opus-removebg-preview.png"], ["category_id", 2]]
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[35mCOMMIT[0m
