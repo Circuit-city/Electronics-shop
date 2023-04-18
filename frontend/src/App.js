@@ -7,7 +7,7 @@ import Homepage from "./components/Homepage"
 
 function App() {
   return (
-    <Router>
+    
     <div>
          <Routes>
           <Route path="/" element={<Homepage />} />
@@ -16,7 +16,7 @@ function App() {
           <Route path="/signup" element={<Signup />}/>
         </Routes>
     </div>
-    </Router>
+    
   );
 }
 
