@@ -7,7 +7,7 @@ const AdminId = () => {
     const {id} = useParams()
 
     useEffect(()=>{
-        fetch(`http://localhost:3000/products/products/${id}`)
+        fetch(`http://localhost:3000/products${id}`)
         .then(response => response.json())
         .then((data)=>{
             setContent(data)

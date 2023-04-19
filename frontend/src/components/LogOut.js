@@ -14,7 +14,7 @@ const LogOut = ({user}) => {
       return;
     }
 
-    const response = await fetch(`http://localhost:3000/products/logout`, {
+    const response = await fetch(`http://localhost:3000/logout`, {
       method: 'DELETE'
     });
 
@@ -32,7 +32,7 @@ const LogOut = ({user}) => {
     <div>
       {loggedInUser && (
         <h1>
-          welcome <span>{loggedInUser.name}</span>
+          welcome <span>{JSON.parse(loggedInUser.name)}</span>
         </h1>
       )}
       <button onClick={(e) => handleLogout(e)}>logout</button>

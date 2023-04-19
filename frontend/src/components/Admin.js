@@ -2,12 +2,13 @@ import React from 'react';
 import { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Admin.css';
+import Navbar from './Navbar';
 
 const Admin = () => {
-    const [products, setProducts] = useState(null)
+    const [products, setProducts] = useState(false)
     // const [edit,setEdit]  = useState()
     useEffect(()=>{
-        fetch('http://localhost:3000/products/products')
+        fetch('http://localhost:3000/products')
         .then(response => response.json())
         .then((data)=>{
           setProducts(data)
@@ -42,7 +43,7 @@ const Admin = () => {
     }
   return (
     <>
-    
+    <Navbar />
     <div className='hero' >
       {products && products.map((item)=>(
         <>  
@@ -58,8 +59,8 @@ const Admin = () => {
                     
                 </div>
                 <div className="btns">
-                  <button onClick={() => deleteProduct(item.id)}>Edit</button>
-                  <button>Delete</button>
+                  <button >Edit</button>
+                  <button onClick={() => deleteProduct(item.id)} >Delete</button>
                 </div>
             </div>
         

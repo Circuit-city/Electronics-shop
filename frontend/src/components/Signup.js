@@ -10,7 +10,7 @@ function Signup(){
     function handlesubmit(){
         console.log(name,email,password)
 
-        fetch(`https://circuit-city-sxh8.onrender.com/register`, {
+        fetch(`http://localhost:3000/register`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'

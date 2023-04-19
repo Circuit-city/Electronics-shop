@@ -10,7 +10,7 @@ const Login = () => {
   const passwordRef = useRef();
   
   const userLogin = async () => {
-    const response = await fetch('http://localhost:3000/products/login', {
+    const response = await fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -40,15 +40,7 @@ const Login = () => {
   }
   console.log("user in Login:", user);
  
-  const forgotPassword = () => {
-    const email = emailRef.current.value
-    if(email) forgot(email).then(()=>{
-        emailRef.current.value=""
-        alert('Password reset email has been sent')
-    })
-
-
-  };
+  
    
   return (
     <>
@@ -68,7 +60,7 @@ const Login = () => {
               <div className="emailplace"><input ref={emailRef} type="email" placeholder="Enter email" required /></div>
               <div className="passplace"><input ref={passwordRef} type="password" placeholder="Input password" required /></div>
               <div className="forgot">
-              <p onClick={forgotPassword}>Forgot password?</p>
+              <p >Forgot password?</p>
               </div>
               <div className="loginBtn">
                 <input type='submit' value='login' />
