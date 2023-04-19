@@ -75,10 +75,10 @@ function Homepage() {
           </div>
         </div>
       
-    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}> 
+        <div className="product-cards-container">
       {products.map(product => (
-        <div key={product.id} style={{ padding: '16px', backgroundColor: 'white', border: '1px solid #252525' }}>
-          <img src={product.image_url} alt={product.name} style={{ width: '200px', height: '200px' }} />
+        <div key={product.id} className="product-card">
+          <img src={product.image_url} alt={product.name} />
           <h3>{product.name}</h3>
           <p>{product.description}</p>
           <p>Price: {product.price}</p>
