@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_04_18_124114) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +32,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_18_124114) do
     t.integer "category_id"
   end
 
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_04_12_094533) do
+>>>>>>> parent of 564cb38 (Merge branch 'main' of github.com:Circuit-city/Electronics-shop into main)
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"

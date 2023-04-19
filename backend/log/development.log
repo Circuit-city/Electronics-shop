@@ -199,6 +199,7 @@ Processing by SessionsController#destroy as */*
 Completed 204 No Content in 1ms (Allocations: 316)
 
 
+<<<<<<< HEAD
   [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Migrating to CreateProducts (20230417172456)
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
@@ -59592,6 +59593,8 @@ Completed 200 OK in 11ms (Views: 5.7ms | ActiveRecord: 0.8ms | Allocations: 6413
 
 
 <<<<<<< HEAD
+=======
+>>>>>>> parent of 564cb38 (Merge branch 'main' of github.com:Circuit-city/Electronics-shop into main)
 Started POST "/register" for ::1 at 2023-04-13 13:07:59 +0300
   [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by UsersController#create as */*
