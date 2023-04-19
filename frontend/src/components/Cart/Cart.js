@@ -27,7 +27,6 @@ export default function Cart() {
     console.log(`Deleting item with id ${id}...`);
     // Send delete request to backend API
   }
-
   return (
     <div>
       <Navbar/>

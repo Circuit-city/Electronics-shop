@@ -1,7 +1,7 @@
 /* Cart Styles */
 
 .cart {
-    border: 1px solid #ccc;
+    border: 1px solid #6391e2;
     padding: 10px;
     }
     
@@ -29,7 +29,7 @@
     }
     
     .checkout-btn {
-    background-color: #4CAF50;
+    background-color: #c3d0c3;
     border: none;
     color: white;
     padding: 10px;
