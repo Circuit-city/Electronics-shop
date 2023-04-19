@@ -60,7 +60,7 @@ const Admin = () => {
                 </div>
                 <div className="btns">
                   <button >Edit</button>
-                  <button onClick={() => deleteProduct(item.id)} >Delete</button>
+                 
                 </div>
             </div>
         
