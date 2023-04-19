@@ -60578,3 +60578,610 @@ Migrating to AddCategoryToProducts (20230418124114)
   [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Audio-Technica ATH Headphones"], ["description", "The Audio-Technica ATH headphones are high-quality headphones designed for audiophiles and music enthusiasts. "], ["price", "12000.0"], ["created_at", "2023-04-18 12:41:34.656804"], ["updated_at", "2023-04-18 12:41:34.656804"], ["image_url", "https://53525363.000webhostapp.com/Images/Razer_Opus-removebg-preview.png"], ["category_id", 2]]
   [1m[36mTRANSACTION (6.9ms)[0m  [1m[35mCOMMIT[0m
 >>>>>>> ec342a515e1a0322e7d3b0bc572c961ae84e5a99
+Started GET "/products/products" for ::1 at 2023-04-19 09:47:07 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"products"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+Completed 404 Not Found in 20ms (ActiveRecord: 6.0ms | Allocations: 6166)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Product with 'id'=products):
+  
+app/controllers/products_controller.rb:44:in `set_product'
+Started GET "/products/products" for ::1 at 2023-04-19 09:47:07 +0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"products"}
+  [1m[36mProduct Load (1.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+Completed 404 Not Found in 8ms (ActiveRecord: 1.3ms | Allocations: 552)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Product with 'id'=products):
+  
+app/controllers/products_controller.rb:44:in `set_product'
+Started GET "/products/products" for ::1 at 2023-04-19 09:48:18 +0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"products"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+Completed 404 Not Found in 46ms (ActiveRecord: 0.4ms | Allocations: 539)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Product with 'id'=products):
+  
+app/controllers/products_controller.rb:44:in `set_product'
+Started GET "/products/products" for ::1 at 2023-04-19 09:48:18 +0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"products"}
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.6ms | Allocations: 527)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Product with 'id'=products):
+  
+app/controllers/products_controller.rb:44:in `set_product'
+Started GET "/products/products" for ::1 at 2023-04-19 09:48:39 +0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"products"}
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.6ms | Allocations: 539)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Product with 'id'=products):
+  
+app/controllers/products_controller.rb:44:in `set_product'
+Started GET "/products/products" for ::1 at 2023-04-19 09:48:39 +0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"products"}
+  [1m[36mProduct Load (3.1ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+Completed 404 Not Found in 12ms (ActiveRecord: 3.1ms | Allocations: 527)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Product with 'id'=products):
+  
+app/controllers/products_controller.rb:44:in `set_product'
+Started GET "/products/products" for 127.0.0.1 at 2023-04-19 09:49:27 +0300
+Processing by ProductsController#show as */*
+  Parameters: {"id"=>"products"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 526)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Product with 'id'=products):
+  
+app/controllers/products_controller.rb:44:in `set_product'
+Started GET "/products" for 127.0.0.1 at 2023-04-19 09:49:57 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.9ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 921ms (Views: 160.7ms | ActiveRecord: 1.9ms | Allocations: 39330)
+
+
+Started GET "/products" for ::1 at 2023-04-19 09:50:20 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.3ms | Allocations: 1850)
+
+
+Started GET "/products" for ::1 at 2023-04-19 09:50:20 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 17ms (Views: 14.3ms | ActiveRecord: 1.8ms | Allocations: 1756)
+
+
+Started POST "/register" for ::1 at 2023-04-19 09:54:21 +0300
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"ian", "email"=>"ian@gmail.com", "password"=>"[FILTERED]", "user"=>{"name"=>"ian", "email"=>"ian@gmail.com"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:18:in `create'
+  [1m[36mUser Exists? (3.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ian@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:18:in `create'
+Completed 422 Unprocessable Entity in 2396ms (Views: 0.7ms | ActiveRecord: 8.5ms | Allocations: 1041901)
+
+
+Started POST "/login" for ::1 at 2023-04-19 09:56:41 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"ian@gmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ian@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ian@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 401 Unauthorized in 14ms (Views: 0.5ms | ActiveRecord: 1.2ms | Allocations: 949)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-04-19 09:57:09 +0300
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:10:in `index'
+Completed 200 OK in 15ms (Views: 12.8ms | ActiveRecord: 0.7ms | Allocations: 943)
+
+
+Started POST "/register" for ::1 at 2023-04-19 09:58:56 +0300
+Processing by UsersController#create as */*
+  Parameters: {"name"=>"mia", "email"=>"mia@gmail.com", "password"=>"[FILTERED]", "user"=>{"name"=>"mia", "email"=>"mia@gmail.com"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:18:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mia@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:18:in `create'
+Completed 422 Unprocessable Entity in 379ms (Views: 0.9ms | ActiveRecord: 0.8ms | Allocations: 2958)
+
+
+Started POST "/login" for ::1 at 2023-04-19 10:02:25 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"johndoe@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"johndoe@example.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johndoe@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 201 Created in 559ms (Views: 0.7ms | ActiveRecord: 0.4ms | Allocations: 891)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:02:38 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 23ms (Views: 22.6ms | ActiveRecord: 0.4ms | Allocations: 1760)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:02:38 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 12.2ms | ActiveRecord: 0.5ms | Allocations: 1754)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:03:11 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 15ms (Views: 13.9ms | ActiveRecord: 0.5ms | Allocations: 1755)
+
+
+Started POST "/login" for ::1 at 2023-04-19 10:03:58 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"johndoe@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"johndoe@example.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johndoe@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 201 Created in 423ms (Views: 0.4ms | ActiveRecord: 0.5ms | Allocations: 727)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:04:12 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.6ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.6ms | Allocations: 1754)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:04:12 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 15ms (Views: 11.9ms | ActiveRecord: 1.8ms | Allocations: 1754)
+
+
+Started POST "/login" for 127.0.0.1 at 2023-04-19 10:07:59 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"johndoe@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"johndoe@example.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johndoe@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 201 Created in 284ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 726)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-04-19 10:08:06 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.3ms | Allocations: 1754)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-04-19 10:08:06 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.0ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 1.0ms | Allocations: 1754)
+
+
+Started DELETE "/products/7" for 127.0.0.1 at 2023-04-19 10:08:14 +0300
+Processing by ProductsController#destroy as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+  [1m[36mProduct Destroy (71.7ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (26.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+Completed 204 No Content in 436ms (ActiveRecord: 99.0ms | Allocations: 1971)
+
+
+Started DELETE "/products/3" for 127.0.0.1 at 2023-04-19 10:08:22 +0300
+Processing by ProductsController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+  [1m[36mProduct Destroy (0.4ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (74.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+Completed 204 No Content in 82ms (ActiveRecord: 75.5ms | Allocations: 1799)
+
+
+Started DELETE "/products/4" for 127.0.0.1 at 2023-04-19 10:08:26 +0300
+Processing by ProductsController#destroy as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+  [1m[36mProduct Destroy (0.3ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (75.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+Completed 204 No Content in 82ms (ActiveRecord: 76.5ms | Allocations: 1796)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-04-19 10:08:29 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.4ms | Allocations: 1385)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-04-19 10:08:29 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.4ms | Allocations: 1385)
+
+
+Started DELETE "/products/5" for 127.0.0.1 at 2023-04-19 10:08:31 +0300
+Processing by ProductsController#destroy as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+  [1m[36mProduct Destroy (0.4ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (97.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+Completed 204 No Content in 105ms (ActiveRecord: 98.7ms | Allocations: 1794)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-04-19 10:08:34 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.4ms | Allocations: 1262)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-04-19 10:08:34 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.4ms | Allocations: 1262)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-04-19 10:08:35 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.3ms | Allocations: 1262)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-04-19 10:08:35 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.4ms | Allocations: 1262)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-04-19 10:08:45 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.5ms | Allocations: 1262)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-04-19 10:08:45 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.4ms | Allocations: 1262)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-04-19 10:09:33 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.3ms | Allocations: 1262)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-04-19 10:09:44 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.3ms | Allocations: 1262)
+
+
+Started POST "/login" for ::1 at 2023-04-19 10:10:25 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"johndoe@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"johndoe@example.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johndoe@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 201 Created in 264ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 726)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:10:29 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.3ms | Allocations: 1262)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:10:29 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.3ms | Allocations: 1262)
+
+
+Started GET "/products2" for ::1 at 2023-04-19 10:10:44 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/products2"):
+  
+Started GET "/products2" for ::1 at 2023-04-19 10:10:44 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/products2"):
+  
+Started GET "/products" for ::1 at 2023-04-19 10:10:53 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.5ms | Allocations: 1261)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:10:53 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.4ms | Allocations: 1262)
+
+
+Started GET "/products6" for ::1 at 2023-04-19 10:10:55 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/products6"):
+  
+Started GET "/products6" for ::1 at 2023-04-19 10:10:55 +0300
+  
+ActionController::RoutingError (No route matches [GET] "/products6"):
+  
+Started GET "/products" for ::1 at 2023-04-19 10:10:57 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.3ms | Allocations: 1261)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:10:57 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.4ms | Allocations: 1262)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:12:17 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.7ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 4.5ms | ActiveRecord: 1.7ms | Allocations: 1262)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:12:17 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.4ms | Allocations: 1262)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johndoe@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "janesmith@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (50.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "laptops"], ["description", nil], ["created_at", "2023-04-19 07:12:49.158145"], ["updated_at", "2023-04-19 07:12:49.158145"]]
+  [1m[36mTRANSACTION (23.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "headphones"], ["description", nil], ["created_at", "2023-04-19 07:12:49.236904"], ["updated_at", "2023-04-19 07:12:49.236904"]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "TVs"], ["description", nil], ["created_at", "2023-04-19 07:12:49.247867"], ["updated_at", "2023-04-19 07:12:49.247867"]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Create (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "cameras"], ["description", nil], ["created_at", "2023-04-19 07:12:49.259430"], ["updated_at", "2023-04-19 07:12:49.259430"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (1.0ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Canon EOS R6"], ["description", "The Canon EOS R6 is a full-frame mirrorless camera that boasts a 20.1MP CMOS sensor, 4K video recording, and advanced autofocus capabilities."], ["price", "140000.0"], ["created_at", "2023-04-19 07:12:49.375023"], ["updated_at", "2023-04-19 07:12:49.375023"], ["image_url", "https://53525363.000webhostapp.com/Images/10_ways_to_supercharge_your_Canon_DSLR_camera-removebg-preview.png"], ["category_id", 8]]
+  [1m[36mTRANSACTION (11.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Audio-Technica ATH-M50x"], ["description", "The Audio-Technica ATH-M50x is a professional studio monitor headphone that delivers exceptional audio performance and comfort. With its large aperture drivers, robust construction, and collapsible design, the ATH-M50x is ideal for professional audio engineers, musicians, and audiophiles."], ["price", "15000.0"], ["created_at", "2023-04-19 07:12:49.392663"], ["updated_at", "2023-04-19 07:12:49.392663"], ["image_url", "https://53525363.000webhostapp.com/Images/Skullcandy_Crusher_Wireless_Over-Ear_Headphones_-_Black-removebg-preview.png"], ["category_id", 6]]
+  [1m[36mTRANSACTION (71.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Dell Inspiron E1405"], ["description", "The Dell Inspiron E1405 is a compact and affordable laptop that offers reliable performance for everyday computing tasks. With its Intel Core processor, ample storage, and vibrant display, the Inspiron E1405 is perfect for students, professionals, and casual users who need a reliable and portable computing solution. It features a sleek design, easy-to-use interface, and a wide range of connectivity options for enhanced productivity and convenience."], ["price", "65000.0"], ["created_at", "2023-04-19 07:12:49.470164"], ["updated_at", "2023-04-19 07:12:49.470164"], ["image_url", "https://53525363.000webhostapp.com/Images/Best_MacBook_alternatives_for_2022___Digital_Trends-removebg-preview.png"], ["category_id", 5]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Hisense U8H"], ["description", "The Hisense U8H is a high-quality 4K Ultra HD Android TV that delivers stunning picture quality, immersive audio, and a wealth of smart features."], ["price", "70000.0"], ["created_at", "2023-04-19 07:12:49.481009"], ["updated_at", "2023-04-19 07:12:49.481009"], ["image_url", "https://53525363.000webhostapp.com/Images/I_like_tv_too_-removebg-preview.png"], ["category_id", 5]]
+  [1m[36mTRANSACTION (5.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Canon EOS 5D"], ["description", "The Canon EOS 5D is a legendary full-frame DSLR camera that offers professional-grade image quality, performance, and versatility."], ["price", "80000.0"], ["created_at", "2023-04-19 07:12:49.492030"], ["updated_at", "2023-04-19 07:12:49.492030"], ["image_url", "https://53525363.000webhostapp.com/Images/Canon_EOS-1D_X_Mark_II_Full-Frame_DSLR_Camera_for_Professional_Image_Creators__Features_20_2MP__Improved_AF_and_4K_Video-removebg-preview.png"], ["category_id", 8]]
+  [1m[36mTRANSACTION (5.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Sennheiser HD 800"], ["description", "The Sennheiser HD 800 is a premium open-back over-ear headphone that offers audiophile-grade sound quality, exceptional comfort, and top-notch craftsmanship."], ["price", "10000.0"], ["created_at", "2023-04-19 07:12:49.503696"], ["updated_at", "2023-04-19 07:12:49.503696"], ["image_url", "https://53525363.000webhostapp.com/Images/Functional_Headphones_That_Are_Also_Pretty_Chic-removebg-preview.png"], ["category_id", 6]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.3ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "HP Envy x360"], ["description", "The HP Envy x360 is a premium 2-in-1 convertible laptop that offers versatility, performance, and style. With its powerful AMD Ryzen processor, up to 16GB of RAM, and fast SSD storage, the Envy x360 delivers smooth and responsive performance for multitasking, creative tasks, and entertainment."], ["price", "50000.0"], ["created_at", "2023-04-19 07:12:49.514520"], ["updated_at", "2023-04-19 07:12:49.514520"], ["image_url", "https://53525363.000webhostapp.com/Images/HP_Pavilion_15-cs3000_%E8%A3%BD%E5%93%81%E8%A9%B3%E7%B4%B0_-_%E3%83%8E%E3%83%BC%E3%83%88%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3___%E6%97%A5%E6%9C%ACHP-removebg-preview.png"], ["category_id", 5]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "LG CX 65-inch 4K"], ["description", "The LG CX 65-inch 4K TV is a cutting-edge OLED TV that offers stunning picture quality, advanced features, and smart functionality. With its 65-inch OLED panel, the CX delivers deep blacks, vibrant colors, and infinite contrast for a truly immersive viewing experience. It supports 4K resolution, HDR formats, and has a high refresh rate for smooth motion handling."], ["price", "70000.0"], ["created_at", "2023-04-19 07:12:49.525941"], ["updated_at", "2023-04-19 07:12:49.525941"], ["image_url", "https://53525363.000webhostapp.com/Images/Vizio_M-Series_Quantum_4K_TV_review-removebg-preview.png"], ["category_id", 7]]
+  [1m[36mTRANSACTION (4.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProduct Create (0.4ms)[0m  [1m[32mINSERT INTO "products" ("name", "description", "price", "created_at", "updated_at", "image_url", "category_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Audio-Technica ATH Headphones"], ["description", "The Audio-Technica ATH headphones are high-quality headphones designed for audiophiles and music enthusiasts. "], ["price", "12000.0"], ["created_at", "2023-04-19 07:12:49.536775"], ["updated_at", "2023-04-19 07:12:49.536775"], ["image_url", "https://53525363.000webhostapp.com/Images/Razer_Opus-removebg-preview.png"], ["category_id", 6]]
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/products" for ::1 at 2023-04-19 10:12:52 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 1.4ms | Allocations: 2371)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:12:52 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.5ms | Allocations: 2371)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:13:42 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.5ms | Allocations: 2371)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:13:42 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.4ms | Allocations: 2371)
+
+
+Started POST "/login" for ::1 at 2023-04-19 10:16:44 +0300
+Processing by SessionsController#create as */*
+  Parameters: {"email"=>"johndoe@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"johndoe@example.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johndoe@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+Completed 201 Created in 321ms (Views: 0.5ms | ActiveRecord: 0.4ms | Allocations: 726)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:17:03 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 18ms (Views: 17.3ms | ActiveRecord: 0.4ms | Allocations: 2371)
+
+
+Started GET "/products" for ::1 at 2023-04-19 10:17:03 +0300
+Processing by ProductsController#index as */*
+  [1m[36mProduct Load (1.1ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 24ms (Views: 21.6ms | ActiveRecord: 1.1ms | Allocations: 2371)
+
+
+Started DELETE "/products/1" for ::1 at 2023-04-19 10:17:24 +0300
+Processing by ProductsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+  [1m[36mProduct Destroy (0.4ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (21.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+Completed 204 No Content in 29ms (ActiveRecord: 22.7ms | Allocations: 1794)
+
+
+Started DELETE "/products/1" for ::1 at 2023-04-19 10:18:58 +0300
+Processing by ProductsController#destroy as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms | Allocations: 535)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Product with 'id'=1):
+  
+app/controllers/products_controller.rb:44:in `set_product'
+Started DELETE "/products/2" for ::1 at 2023-04-19 10:19:04 +0300
+Processing by ProductsController#destroy as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mProduct Load (0.2ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+  [1m[36mProduct Destroy (0.4ms)[0m  [1m[31mDELETE FROM "products" WHERE "products"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (18.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/products_controller.rb:38:in `destroy'
+Completed 204 No Content in 24ms (ActiveRecord: 18.7ms | Allocations: 1794)
+
+
+Started GET "/" for 127.0.0.1 at 2023-04-19 10:23:27 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/share/rvm/gems/ruby-3.0.2/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/share/rvm/gems/ruby-3.0.2/gems/railties-7.0.4.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 11.6ms | Allocations: 845)
+Completed 200 OK in 46ms (Views: 17.3ms | ActiveRecord: 0.0ms | Allocations: 4087)
+
+
+Started GET "/users" for 127.0.0.1 at 2023-04-19 10:23:33 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:10:in `index'
+Completed 200 OK in 47ms (Views: 36.6ms | ActiveRecord: 6.4ms | Allocations: 19549)
+
+
+Started GET "/products" for 127.0.0.1 at 2023-04-19 10:23:52 +0300
+Processing by ProductsController#index as HTML
+  [1m[36mProduct Load (0.8ms)[0m  [1m[34mSELECT "products".* FROM "products"[0m
+  ↳ app/controllers/products_controller.rb:8:in `index'
+Completed 200 OK in 32ms (Views: 20.2ms | ActiveRecord: 5.2ms | Allocations: 20511)
+
+
+Started GET "/products/1" for 127.0.0.1 at 2023-04-19 10:24:00 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.5ms | Allocations: 1827)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Product with 'id'=1):
+  
+app/controllers/products_controller.rb:44:in `set_product'
+Started GET "/products/6" for 127.0.0.1 at 2023-04-19 10:24:04 +0300
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT "products".* FROM "products" WHERE "products"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/products_controller.rb:44:in `set_product'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.4ms | Allocations: 2523)
+
+
+  
+NameError (undefined local variable or method `product' for #<ProductsController:0x00000000005168>
+Did you mean?  @product):
+  
+app/controllers/products_controller.rb:13:in `show'
