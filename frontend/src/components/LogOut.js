@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
+import Navbar from './Navbar';
 
 const LogOut = ({user}) => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const LogOut = ({user}) => {
       return;
     }
 
-    const response = await fetch(`https://circuit-city-sxh8.onrender.com/logout`, {
+    const response = await fetch(`http://localhost:3000/logout`, {
       method: 'DELETE'
     });
 
@@ -27,15 +28,22 @@ const LogOut = ({user}) => {
   }
   console.log("user in LogOut:", loggedInUser);
   return (
+    <>
     <div>
       {loggedInUser && (
         <h1>
-          welcome <span>{loggedInUser.name}</span>
+          welcome <span>{JSON.parse(loggedInUser.name)}</span>
         </h1>
       )}
       <button onClick={(e) => handleLogout(e)}>logout</button>
     </div>
+
+    {<Navbar handleLogout={handleLogout} loggedInUser={loggedInUser}/>}
+
+    </>    
   )
+
+  
 }
 
 export default LogOut

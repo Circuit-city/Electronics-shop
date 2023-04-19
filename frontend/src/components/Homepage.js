@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 import './homepageAndNavbar.css';
 
+
 function Homepage() {  
   return (
     <div>
@@ -49,7 +50,7 @@ function Homepage() {
             src="https://53525363.000webhostapp.com/Images/HP_Pavilion_15-cs3000_%E8%A3%BD%E5%93%81%E8%A9%B3%E7%B4%B0_-_%E3%83%8E%E3%83%BC%E3%83%88%E3%83%91%E3%82%BD%E3%82%B3%E3%83%B3___%E6%97%A5%E6%9C%ACHP-removebg-preview.png"
             alt=""
           />
-          <h2>Affordable prices</h2>
+          <h2>Reasonable Pricing</h2>
             <h3>Fast Shipping</h3>
         </div>
         <div className="box box6">
@@ -67,4 +68,3 @@ function Homepage() {
 }
 
 export default Homepage;
-    
