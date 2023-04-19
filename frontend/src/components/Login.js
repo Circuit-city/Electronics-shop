@@ -40,6 +40,15 @@ const Login = () => {
   }
   console.log("user in Login:", user);
  
+  const forgotPassword = () => {
+    const email = emailRef.current.value
+    if(email) forgot(email).then(()=>{
+        emailRef.current.value=""
+        alert('Password reset email has been sent')
+    })
+
+
+  };
    
   return (
     <>
@@ -59,7 +68,7 @@ const Login = () => {
               <div className="emailplace"><input ref={emailRef} type="email" placeholder="Enter email" required /></div>
               <div className="passplace"><input ref={passwordRef} type="password" placeholder="Input password" required /></div>
               <div className="forgot">
-                <p>Forgot password?</p>
+              <p onClick={forgotPassword}>Forgot password?</p>
               </div>
               <div className="loginBtn">
                 <input type='submit' value='login' />
