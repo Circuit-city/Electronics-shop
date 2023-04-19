@@ -12,10 +12,7 @@ development:
 
 production:
   <<: *default
-  adapter: postgresql
-  username: <%= ENV['DEV_DB_USER'] %>
-  password: <%= ENV['DEV_DB_PASSWORD'] %>
-  database: <%= ENV['DEV_DB_NAME'] %> 
+  url: <%= ENV["circuitcityy"] %>
 
 # test: 
 #   <<: *default
