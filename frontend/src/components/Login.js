@@ -10,7 +10,7 @@ const Login = () => {
   const passwordRef = useRef();
   
   const userLogin = async () => {
-    const response = await fetch('https://circuit-city-sxh8.onrender.com/login', {
+    const response = await fetch('http://localhost:3000/products/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ const Login = () => {
         // If login is successful, set the user data in state
         setUser(data);
         localStorage.setItem('user', JSON.stringify(data));
-        navigate('/logout')
+        navigate('/')
         console.log(data)
        
       } else {
